@@ -14,13 +14,14 @@ public class TextWriter : MonoBehaviour
     }
     IEnumerator ShowText()
     {
-        //Limpio el texto de la interfaz
-        textUI.text = "";
+        //Pongo el texto en la UI y lo hago "invisible"
+        textUI.text = textToShow;
+        textUI.maxVisibleCharacters = 0;
         //Por cada letra que hay en el texto:
         foreach (char c in textToShow)
         {
-            //añado la letra al texto de la interfaz
-            textUI.text += c;
+            //vamos haciendo visible letra a letra
+            textUI.maxVisibleCharacters++;
             //"Esperamos" un tiempo "time" para volver al foreach
             yield return new WaitForSeconds(time);
         }
